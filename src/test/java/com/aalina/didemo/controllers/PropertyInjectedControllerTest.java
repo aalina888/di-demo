@@ -1,6 +1,5 @@
 package com.aalina.didemo.controllers;
 
-import com.aalina.didemo.services.GreetingService;
 import com.aalina.didemo.services.GreetingServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +11,7 @@ public class PropertyInjectedControllerTest {
     @Before
     public void setUp() throws Exception {
         this.propertyInjectedController = new PropertyInjectedController();
-        this.propertyInjectedController.greetingService = new GreetingServiceImpl();
+        this.propertyInjectedController.greetingServiceImpl = new GreetingServiceImpl();
     }
 
     @Test
