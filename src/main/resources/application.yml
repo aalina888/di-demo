@@ -1,0 +1,5 @@
+aalina:
+      jms:
+        username: JMS Username
+        password: somepass
+        dburl: SomeUrl
