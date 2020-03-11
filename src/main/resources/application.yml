@@ -3,3 +3,10 @@ aalina:
         username: JMS Username
         password: somepass
         dburl: SomeUrl
+
+---
+spring:
+  profiles: de
+aalina:
+  jms:
+    username: JMS Username $$$ Username
