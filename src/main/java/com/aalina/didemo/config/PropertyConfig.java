@@ -2,24 +2,12 @@ package com.aalina.didemo.config;
 
 import com.aalina.didemo.examplebeans.FakeDataSource;
 import com.aalina.didemo.examplebeans.FakeJmsBroker;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySources({
-        @PropertySource("classpath:datasource.properties"),
-        @PropertySource("classpath:jms.properties")
-})
 public class PropertyConfig {
-    @Autowired
-    Environment env;
-
     @Value("${aalina.username}")
     String username;
 
@@ -41,7 +29,7 @@ public class PropertyConfig {
     @Bean
     public FakeDataSource fakeDataSource() {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUser(env.getProperty("USERNAME"));
+        fakeDataSource.setUser(username);
         fakeDataSource.setPassword(password);
         fakeDataSource.setUrl(url);
 
@@ -56,12 +44,5 @@ public class PropertyConfig {
         fakeJmsBroker.setUrl(jmsUrl);
 
         return fakeJmsBroker;
-    }
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer properties() {
-        PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer = new PropertySourcesPlaceholderConfigurer();
-
-        return propertySourcesPlaceholderConfigurer;
     }
 }
